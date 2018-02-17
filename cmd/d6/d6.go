@@ -41,7 +41,6 @@ func run() {
 		if win.JustPressed(pixelgl.KeyEnter) || win.JustPressed(pixelgl.MouseButton1) {
 			win.Clear(colornames.Black)
 			rolls := dice.Roll(1, 6)
-			fmt.Printf("%v\n", rolls)
 			txt.Clear()
 			fmt.Fprintln(txt, fmt.Sprintf("You rolled a %d", rolls[0]))
 			fmt.Fprintln(txt, strings.Join(d6.Drawings[rolls[0]], "\n"))
