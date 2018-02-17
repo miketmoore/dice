@@ -9,16 +9,16 @@ import (
 	"github.com/faiface/pixel/text"
 	"github.com/miketmoore/go-dice/d6"
 	"github.com/miketmoore/go-dice/dice"
+	"github.com/nicksnyder/go-i18n/i18n"
 	"golang.org/x/image/colornames"
 )
 
-var locale = map[string]string{
-	"title":       "D6",
-	"instruction": "Press enter or click to roll!",
-	"youRolledAN": "You rolled a %d",
-}
+var translationFile = "i18n/d6/en-US.all.json"
 
 func run() {
+	i18n.MustLoadTranslationFile(translationFile)
+	T, err := i18n.Tfunc("en-US")
+
 	// Setup Text
 	orig := pixel.V(20, 50)
 	txt := text.New(orig, text.Atlas7x13)
@@ -26,7 +26,7 @@ func run() {
 
 	// Setup GUI window
 	cfg := pixelgl.WindowConfig{
-		Title:  locale["title"],
+		Title:  T("title"),
 		Bounds: pixel.R(0, 0, 400, 225),
 		VSync:  true,
 	}
@@ -35,7 +35,7 @@ func run() {
 		panic(err)
 	}
 
-	fmt.Fprintln(txt, locale["instruction"])
+	fmt.Fprintln(txt, T("instruction"))
 
 	// win.SetCursorVisible(false)
 	for !win.Closed() {
@@ -44,7 +44,7 @@ func run() {
 			win.Clear(colornames.Black)
 			rolls := dice.Roll(1, 6)
 			txt.Clear()
-			fmt.Fprintln(txt, fmt.Sprintf(locale["youRolledAN"], rolls[0]))
+			fmt.Fprintln(txt, fmt.Sprintf(T("youRolledAN"), rolls[0]))
 			fmt.Fprintln(txt, strings.Join(d6.Drawings[rolls[0]], "\n"))
 		}
 		win.Update()
@@ -54,3 +54,11 @@ func run() {
 func main() {
 	pixelgl.Run(run)
 }
+
+// func handleRequest(w http.ResponseWriter, r *http.Request) {
+// 	cookieLang := r.Cookie("lang")
+// 	acceptLang := r.Header.Get("Accept-Language")
+// 	defaultLang = "en-US" // known valid language
+// 	T, err := i18n.Tfunc(cookieLang, acceptLang, defaultLang)
+// 	fmt.Println(T("Hello world"))
+// }

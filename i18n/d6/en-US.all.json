@@ -1,0 +1,11 @@
+{
+  "instruction": {
+    "other": "Press enter or click to roll!"
+  },
+  "title": {
+    "other": "D6"
+  },
+  "youRolledAN": {
+    "other": "You rolled a %d"
+  }
+}
