@@ -1,0 +1,11 @@
+{
+  "instruction": {
+    "other": "Presione enter o haga clic para rodar!"
+  },
+  "title": {
+    "other": "D6"
+  },
+  "youRolledAN": {
+    "other": "Has rodado un {{.Roll}}"
+  }
+}
