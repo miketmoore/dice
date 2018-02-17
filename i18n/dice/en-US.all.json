@@ -1,0 +1,14 @@
+[
+  {
+    "id": "flagDescription_totalRollsPerDice",
+    "translation": "Total rolls per dice."
+  },
+  {
+    "id": "flagDescription_totalSidesPerDice",
+    "translation": "Total sides per dice."
+  },
+  {
+    "id": "youRolledNDice",
+    "translation": "You rolled {{.Total}} dice..."
+  }
+]

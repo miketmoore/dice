@@ -14,10 +14,14 @@ import (
 )
 
 var translationFile = "i18n/d6/en-US.all.json"
+var lang = "en-US"
 
 func run() {
 	i18n.MustLoadTranslationFile(translationFile)
-	T, err := i18n.Tfunc("en-US")
+	T, err := i18n.Tfunc(lang)
+	if err != nil {
+		panic(err)
+	}
 
 	// Setup Text
 	orig := pixel.V(20, 50)
@@ -54,11 +58,3 @@ func run() {
 func main() {
 	pixelgl.Run(run)
 }
-
-// func handleRequest(w http.ResponseWriter, r *http.Request) {
-// 	cookieLang := r.Cookie("lang")
-// 	acceptLang := r.Header.Get("Accept-Language")
-// 	defaultLang = "en-US" // known valid language
-// 	T, err := i18n.Tfunc(cookieLang, acceptLang, defaultLang)
-// 	fmt.Println(T("Hello world"))
-// }
