@@ -2,7 +2,7 @@
 
 ## D6 GUI
 
-![Screenshot of D6 GUI](assets/screenshots/you-rolled-a-six.png | width=400)
+<img src="assets/screenshots/you-rolled-a-six.png" width="400">
 
 Roll one six-sided die via a GUI!
 
