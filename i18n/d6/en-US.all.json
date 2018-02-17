@@ -6,6 +6,6 @@
     "other": "D6"
   },
   "youRolledAN": {
-    "other": "You rolled a %d"
+    "other": "You rolled a {{.Roll}}"
   }
 }

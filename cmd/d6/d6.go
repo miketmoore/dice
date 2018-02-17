@@ -44,7 +44,7 @@ func run() {
 			win.Clear(colornames.Black)
 			rolls := dice.Roll(1, 6)
 			txt.Clear()
-			fmt.Fprintln(txt, fmt.Sprintf(T("youRolledAN"), rolls[0]))
+			fmt.Fprintln(txt, T("youRolledAN", map[string]interface{}{"Roll": rolls[0]}))
 			fmt.Fprintln(txt, strings.Join(d6.Drawings[rolls[0]], "\n"))
 		}
 		win.Update()
