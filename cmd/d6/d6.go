@@ -13,7 +13,9 @@ import (
 )
 
 var locale = map[string]string{
-	"title": "D6",
+	"title":       "D6",
+	"instruction": "Press enter or click to roll!",
+	"youRolledAN": "You rolled a %d",
 }
 
 func run() {
@@ -33,7 +35,7 @@ func run() {
 		panic(err)
 	}
 
-	fmt.Fprintln(txt, "Press enter or click to roll!")
+	fmt.Fprintln(txt, locale["instruction"])
 
 	// win.SetCursorVisible(false)
 	for !win.Closed() {
@@ -42,7 +44,7 @@ func run() {
 			win.Clear(colornames.Black)
 			rolls := dice.Roll(1, 6)
 			txt.Clear()
-			fmt.Fprintln(txt, fmt.Sprintf("You rolled a %d", rolls[0]))
+			fmt.Fprintln(txt, fmt.Sprintf(locale["youRolledAN"], rolls[0]))
 			fmt.Fprintln(txt, strings.Join(d6.Drawings[rolls[0]], "\n"))
 		}
 		win.Update()
