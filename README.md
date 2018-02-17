@@ -2,7 +2,7 @@
 
 ## D6 GUI
 
-![Screenshot of D6 GUI](assets/day_cycle_01.png)
+![Screenshot of D6 GUI](assets/screenshots/you-rolled-a-six.png)
 
 Roll one six-sided die via a GUI!
 
