@@ -6,6 +6,8 @@ Roll one six-sided die via a GUI!
 
 <img src="assets/screenshots/you-rolled-a-six-sprite.png" width="400">
 
+[Sprite Sheet Credit](http://kenney.nl/assets/boardgame-pack)
+
 ```
 go run cmd/d6sprite/d6sprite.go
 ```
