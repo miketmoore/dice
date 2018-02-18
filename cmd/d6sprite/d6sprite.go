@@ -41,12 +41,12 @@ func run() {
 
 	// Build map of dice sprite sheets
 	var diceSides = map[int]*pixel.Sprite{
-		5: pixel.NewSprite(pic, pixel.Rect{pixel.Vec{0, 0}, pixel.Vec{diceWidth, halfHeight}}),
-		3: pixel.NewSprite(pic, pixel.Rect{pixel.Vec{diceWidth, 0}, pixel.Vec{diceWidth * 2, halfHeight}}),
-		4: pixel.NewSprite(pic, pixel.Rect{pixel.Vec{diceWidth * 2, 0}, pixel.Vec{diceWidth * 3, halfHeight}}),
-		6: pixel.NewSprite(pic, pixel.Rect{pixel.Vec{0, halfHeight}, pixel.Vec{diceWidth, halfHeight * 2}}),
-		1: pixel.NewSprite(pic, pixel.Rect{pixel.Vec{diceWidth, halfHeight}, pixel.Vec{diceWidth * 2, halfHeight * 2}}),
-		2: pixel.NewSprite(pic, pixel.Rect{pixel.Vec{diceWidth * 2, halfHeight}, pixel.Vec{diceWidth * 3, halfHeight * 2}}),
+		5: newSprite(pic, 0, 0, diceWidth, halfHeight),
+		3: newSprite(pic, diceWidth, 0, diceWidth*2, halfHeight),
+		4: newSprite(pic, diceWidth*2, 0, diceWidth*3, halfHeight),
+		6: newSprite(pic, 0, halfHeight, diceWidth, halfHeight*2),
+		1: newSprite(pic, diceWidth, halfHeight, diceWidth*2, halfHeight*2),
+		2: newSprite(pic, diceWidth*2, halfHeight, diceWidth*3, halfHeight*2),
 	}
 
 	// Setup Text
@@ -82,6 +82,10 @@ func run() {
 
 func main() {
 	pixelgl.Run(run)
+}
+
+func newSprite(pic pixel.Picture, xa, ya, xb, yb float64) *pixel.Sprite {
+	return pixel.NewSprite(pic, pixel.Rect{pixel.Vec{xa, ya}, pixel.Vec{xb, yb}})
 }
 
 func loadPicture(path string) (pixel.Picture, error) {
