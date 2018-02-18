@@ -1,6 +1,14 @@
 # Go Dice
 
-## D6 GUI
+## D6 GUI - Sprite Sheet
+
+Roll one six-sided die via a GUI!
+
+```
+go run cmd/d6sprite/d6sprite.go
+```
+
+## D6 GUI - ASCII Art
 
 <img src="assets/screenshots/you-rolled-a-six.png" width="400">
 
