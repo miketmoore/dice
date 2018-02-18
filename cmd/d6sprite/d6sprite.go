@@ -67,14 +67,16 @@ func run() {
 
 	fmt.Fprintln(txt, T("instruction"))
 
+	rollCount := 0
 	for !win.Closed() {
-		x := win.Bounds().Center().Sub(txt.Bounds().Center())
-		txt.Draw(win, pixel.IM.Moved(x))
+		txt.Draw(win, pixel.IM.Moved(win.Bounds().Center().Sub(txt.Bounds().Center())))
 		if win.JustPressed(pixelgl.KeyEnter) || win.JustPressed(pixelgl.MouseButton1) {
 			win.Clear(colornames.Darkgrey)
 			rolls := dice.Roll(1, 6)
+			fmt.Printf("Roll #%d: %d\n", rollCount, rolls[0])
 			txt.Clear()
 			diceSides[rolls[0]].Draw(win, pixel.IM.Moved(win.Bounds().Center()))
+			rollCount++
 		}
 		win.Update()
 	}
