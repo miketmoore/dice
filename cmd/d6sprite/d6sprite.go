@@ -10,6 +10,7 @@ import (
 	"github.com/faiface/pixel"
 	"github.com/faiface/pixel/pixelgl"
 	"github.com/faiface/pixel/text"
+	"github.com/miketmoore/go-dice/degrees"
 	"github.com/miketmoore/go-dice/dice"
 	"github.com/nicksnyder/go-i18n/i18n"
 	"golang.org/x/image/colornames"
@@ -62,18 +63,68 @@ func run() {
 		panic(err)
 	}
 
+	win.SetSmooth(true)
+
 	fmt.Fprintln(txt, T("instruction"))
 
 	rollCount := 0
+	// Two states
+	// State 1: Waiting for input
+	// State 2: Rolling
+	state := "waitingForInput"
+	var roll int
+	animationCount := 0
+	degreeIndex := len(degrees.Degrees) - 1
+	diceSideIndex := 1
 	for !win.Closed() {
 		txt.Draw(win, pixel.IM.Moved(win.Bounds().Center().Sub(txt.Bounds().Center())))
-		if win.JustPressed(pixelgl.KeyEnter) || win.JustPressed(pixelgl.MouseButton1) {
+
+		switch state {
+		case "waitingForInput":
+			if win.JustPressed(pixelgl.KeyEnter) || win.JustPressed(pixelgl.MouseButton1) {
+				fmt.Printf("Input detected...\n")
+				win.Clear(colornames.Darkgrey)
+				txt.Clear()
+				state = "rollingAnimation"
+			}
+		case "rollingAnimation":
+			animationCount++
 			win.Clear(colornames.Darkgrey)
+			mat := pixel.IM
+			mat = mat.Moved(win.Bounds().Center())
+			mat = mat.Rotated(win.Bounds().Center(), degrees.Degrees[degreeIndex])
+			diceSides[diceSideIndex].Draw(win, mat)
+
+			degreeIndex--
+			if degreeIndex == 0 {
+				degreeIndex = len(degrees.Degrees) - 1
+			}
+
+			diceSideIndex++
+			if diceSideIndex == 7 {
+				diceSideIndex = 1
+			}
+
+			if animationCount == 20 {
+				animationCount = 0
+				state = "rolling"
+			}
+		case "rolling":
+			win.Clear(colornames.Darkgrey)
+			fmt.Printf("Rolling...\n")
+			// Get roll
 			rolls := dice.Roll(1, 6)
-			fmt.Printf("Roll #%d: %d\n", rollCount, rolls[0])
-			txt.Clear()
-			diceSides[rolls[0]].Draw(win, pixel.IM.Moved(win.Bounds().Center()))
+			roll = rolls[0]
+			fmt.Printf("Roll #%d: %d\n", rollCount, roll)
+
+			diceSide := diceSides[roll]
+			mat := pixel.IM
+			mat = mat.Moved(win.Bounds().Center())
+			mat = mat.Rotated(win.Bounds().Center(), degrees.Degrees[degreeIndex])
+			diceSide.Draw(win, mat)
+
 			rollCount++
+			state = "waitingForInput"
 		}
 		win.Update()
 	}
