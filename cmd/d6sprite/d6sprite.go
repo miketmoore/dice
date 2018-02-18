@@ -34,10 +34,7 @@ func run() {
 	}
 
 	diceWidth := math.Floor(pic.Bounds().W()/3) - 21
-	fmt.Printf("Third of width: %v\n", diceWidth)
-
 	halfHeight := math.Floor(pic.Bounds().H() / 2)
-	fmt.Printf("Half of height: %v\n", halfHeight)
 
 	// Build map of dice sprite sheets
 	var diceSides = map[int]*pixel.Sprite{
