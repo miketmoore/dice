@@ -2,6 +2,10 @@
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/miketmoore/go-dice)](https://goreportcard.com/report/github.com/miketmoore/go-dice)
 
+```
+go get github.com/miketmoore/go-dice
+```
+
 ## D6 GUI - Sprite Sheet
 
 Roll one six-sided die via a GUI!
