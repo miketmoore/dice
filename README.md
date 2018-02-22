@@ -1,9 +1,9 @@
 # Go Dice
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/miketmoore/go-dice)](https://goreportcard.com/report/github.com/miketmoore/go-dice)
+[![Go Report Card](https://goreportcard.com/badge/github.com/miketmoore/dice)](https://goreportcard.com/report/github.com/miketmoore/dice)
 
 ```
-go get github.com/miketmoore/go-dice
+go get github.com/miketmoore/dice
 ```
 
 ## D6 GUI - Sprite Sheet

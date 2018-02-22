@@ -6,7 +6,7 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/miketmoore/go-dice/dice"
+	"github.com/miketmoore/dice/dice"
 	"github.com/nicksnyder/go-i18n/i18n"
 )
 

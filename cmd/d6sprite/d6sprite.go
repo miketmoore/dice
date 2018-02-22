@@ -10,8 +10,8 @@ import (
 	"github.com/faiface/pixel"
 	"github.com/faiface/pixel/pixelgl"
 	"github.com/faiface/pixel/text"
-	"github.com/miketmoore/go-dice/degrees"
-	"github.com/miketmoore/go-dice/dice"
+	"github.com/miketmoore/dice/degrees"
+	"github.com/miketmoore/dice/dice"
 	"github.com/nicksnyder/go-i18n/i18n"
 	"golang.org/x/image/colornames"
 )
